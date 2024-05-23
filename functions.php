@@ -2,6 +2,13 @@
 
 declare(strict_types=1); //php declarará los tipos como estrictos, por lo que no hará conversiones (como de string a int). Esto funciona a nivel de archivo y arriba del todo 
 
+#digamos que esta funcion se encarga de "automatizar" el renderizado de los distintos templates (ver index.php)
+function render_template(string $template, array $data = []){
+    //usamos extract para extraer las variables de $data a esta funcion
+    extract($data);
+    require "templates/$template.php";
+}
+
 
 #funcion que se encarga de llamar a la api. Usando ch se pueden hacer cualquier tipo de peticiones
 function get_api_content(){ 
